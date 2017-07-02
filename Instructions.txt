@@ -1,0 +1,119 @@
+Tower creation:
+	Each tower file should contain at most 6 lines of text 
+		(extra lines after 6 are not taken into acccount).
+	There are currently three types of towers, ShootingTower, AreaTower and MoneyTower.
+	Hybrid towers are not supported as of yet.
+	ShootingTower and AreaTower are DamageTowers.
+	All tower files begin with the identification letter of the tower (S, A or M).
+	Damage towers contain 5 or 6 lines of text, while MoneyTowers only contain 3 or 4.
+	(Examples at the end of file)
+	DamageTower syntax:
+		1: Identifier letter (S or A)
+		2: cost of tower
+		3: speed of tower (the smaller the faster, shoots approx. (60 / speed) times a second)
+		4: damage of tower
+		5: range of tower
+		6: (optional) the size of the tower on screen (the length of one side of the square, defaults to 10)
+	MoneyTower syntax:
+		1: Identifier letter (M)
+		2: cost of tower
+		3: income (the amount of money the player gets if he/she has the tower at the end of a given round)
+		4: (optional) the size of the tower on screen (the length of one side of the square, defaults to 10)
+
+Enemy creation:
+	Each enemy file should contain 3 or 4 lines of text.
+	Enemy syntax:
+		1: Max HP
+		2: Speed
+		3: Money you get for a kill
+		4: (optional) The amount of ticks before the next enemy is released (default = 60; ~1 enemy per sec)
+		
+Round creation:
+	A Round file is a file that contains a set of rounds.
+	The contents of one round file represent one "Level" in the game.
+	Each round file can consist of an arbitrary number of lines.
+	Each line tells how many of each enemy are on a round.
+	A line consists of: the name of the given enemy, the number of said enemies. 
+	eg. "demo/5" would mean 5 demo enemies are on the round
+	Rounds are separated by empty lines.
+	Examples at the end of this file.
+	
+Course creation:
+	A course file represents one course in the game, that is, the map, set of rounds and the path of the enemies.
+	Each course file should contain 2 + n lines, n being the amount of turns in the path of the enemies.
+	The first line contains the path to the background image of the course (the "map").
+	The second line contains the name of the round file used in the course.
+	All the lines after this are coordinates at which the enemies take a turn. (Format is: 150, 150)
+	(Top left corner is (0,0), x increases to the right and y increases downwards.)
+	
+Comments can be added to files with '#' signs at the end of lines.
+	
+Examples of tower files:
+--------------	this one creates a ShootingTower with all the values at 100 and default size -----
+S			#Shooting tower
+100			#Cost: 100
+100			#Speed: 100
+100			#Damage: 100
+100			#Range: 100
+--------------------------------------------------------------------------------------------------
+--------------	this one creates an AreaTower with custom values and a size of 25 ----------------
+A
+150
+60
+5
+150
+25
+--------------------------------------------------------------------------------------------------
+--------------	this one creates a MoneyTower with custom values and default size 10 -------------
+M
+150
+40
+--------------------------------------------------------------------------------------------------
+
+
+Examples of enemy files:
+--------------	this one creates an enemy with 100 health, a speed of 1 and a bounty of 10 -------
+100			#Health: 100
+1			#Speed: 1
+10			#Bounty: 10
+30			#Ticks to next enemy: 30
+--------------------------------------------------------------------------------------------------
+--------------	this one creates an enemy with 300 health, a speed of 3 and a bounty of 100 ------
+300
+3
+100
+--------------------------------------------------------------------------------------------------
+--------------	this one creates an enemy with 100 health, a speed of 5 and a bounty of 25 -------
+100
+5
+25
+--------------------------------------------------------------------------------------------------
+
+Examples of round files:
+--------------	this one creates 2 rounds: the first one has 5 WeakSlow enemies, the second one has 10 WeakFast enemies -------
+WeakSlow/5	#Round 1
+
+WeakFast/10	#Round 2
+--------------------------------------------------------------------------------------------------
+--------------	this one creates 3 rounds --------------------------------------------------------
+WeakSlow/5	#Round 1
+
+WeakSlow/10 #Round 2
+WeakFast/5
+
+WeakFast/10 #Round 3
+--------------------------------------------------------------------------------------------------
+
+Example of a course file:
+--------------	this one creates a course with the map found in Pics/number1.png, rounds found in file Easy and the path coordinates -------
+Pics/number1.png	#Background picture
+Easy				#Name of the set of rounds
+135, 115			#Turning coordinates
+230, 35
+230, 450
+75, 450
+75, 480
+390, 480
+390, 460
+425, 460
+--------------------------------------------------------------------------------------------------

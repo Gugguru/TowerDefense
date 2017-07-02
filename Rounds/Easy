@@ -1,0 +1,24 @@
+WeakSlow/15 		#Round 1
+
+WeakSlow/10			#Round 2
+WeakAverage/5
+
+WeakAverage/15		#Round 3
+
+MediumSlow/10		#Round 4
+
+MediumSlow/10		#Round 5
+MediumAverage/5
+
+MediumAverage/15	#Round 6
+
+StrongSlow/15		#Round 7
+StrongAverage/10	
+
+StrongAverage/20	#Round 8
+
+WeakFast/20			#Round9
+MediumAverage/20
+StrongSlow/20
+
+EasyBoss/1			#Round 10 Boss
